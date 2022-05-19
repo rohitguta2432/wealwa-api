@@ -1,7 +1,7 @@
 package com.api.wealthwa.controller;
 
-import com.api.wealthwa.mapper.UserMapper;
-import com.api.wealthwa.service.UserService;
+import com.api.wealthwa.model.Contacts;
+import com.api.wealthwa.service.ContactService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,20 +12,18 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  * @Author rohit
- * @Date 12/05/22
+ * @Date 19/05/22
  **/
-
+@RequestMapping("contact")
 @RestController
-@RequestMapping("user")
-public class UserController {
+public class ContactController {
 
     @Autowired
-    private UserService userService;
-
+    private ContactService contactService;
 
     @PostMapping
-    public ResponseEntity<?> create(@RequestBody UserMapper user) {
-        return new ResponseEntity<>(userService.create(user), HttpStatus.OK);
+    public ResponseEntity<?> create(@RequestBody Contacts contact) {
+        return new ResponseEntity<>(contactService.create(contact),HttpStatus.OK);
     }
-}
 
+}
