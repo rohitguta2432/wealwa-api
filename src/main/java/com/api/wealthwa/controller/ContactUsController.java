@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
  **/
 @RequestMapping("contact")
 @RestController
-public class ContactController {
+public class ContactUsController {
 
     @Autowired
     private ContactService contactService;

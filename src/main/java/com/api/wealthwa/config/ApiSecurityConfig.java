@@ -64,6 +64,15 @@ public class ApiSecurityConfig extends WebSecurityConfigurerAdapter {
         return new BCryptPasswordEncoder();
     }
 
+    private static final String[] SWAGGER_ENDPOINTS = {
+            "/swagger-resources/**",
+            "/swagger-ui.html",
+            "/actuator/health",
+            "/v2/api-docs",
+            "/webjars/**",
+            "/swagger-ui/**",
+            "/v3/api-docs/**"
+    };
 
     @Bean
     public FilterRegistrationBean corsFilter() {
@@ -94,6 +103,9 @@ public class ApiSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/auth/**").permitAll()
                 .antMatchers("/user/**").permitAll()
                 .antMatchers("/contact/**").permitAll()
+                .antMatchers("/category/**").permitAll()
+                .antMatchers("/content/**").permitAll()
+                .antMatchers(SWAGGER_ENDPOINTS).permitAll()
                 .anyRequest()
                 .authenticated();
 

@@ -9,25 +9,23 @@ import javax.persistence.*;
 import java.util.UUID;
 
 
-/**
- * @Author rohit
- * @Date 16/05/22
- **/
-
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
 @Data
+@Builder
 @Entity
-@Table(name = "auth_tokens")
-public class AuthToken {
+@Table(name = "categorys")
+public class Categorys {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private UUID authId;
+    private UUID categoryId;
 
-    private String token;
+    private String name;
 
-    private UUID userId;
+    private UUID parentId;
+
+    private String description;
+
 
 }
