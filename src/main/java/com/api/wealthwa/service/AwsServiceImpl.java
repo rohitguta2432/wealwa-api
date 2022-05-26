@@ -39,6 +39,7 @@ public class AwsServiceImpl implements AwsService {
     public void uploadImage(MultipartFile file, Contents contents) {
         log.info("upload to s3 [{}]");
         ObjectMetadata objectMetadata = new ObjectMetadata();
+        objectMetadata.setContentLength(file.getSize());
         try {
             amazonS3.putObject(new PutObjectRequest(bucketName, contents.getContentId() + File.separator + file.getOriginalFilename(), file.getInputStream(), objectMetadata).withCannedAcl(CannedAccessControlList.PublicRead));
 

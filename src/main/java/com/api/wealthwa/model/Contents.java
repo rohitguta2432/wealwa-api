@@ -24,15 +24,18 @@ public class Contents {
     @NotNull(message = "categoryId cannot be null")
     private UUID categoryId;
 
-    @NotNull(message = "images cannot be null ")
     private String imgUrl;
 
     @NotNull(message = "contents cannot be null ")
+    @Column(name = "description", length = 5000)
     private String description;
 
     @Transient
     private String categoryName;
 
 
-
+    public Contents(@NotNull(message = "categoryId cannot be null") UUID categoryId, @NotNull(message = "contents cannot be null ") String description) {
+        this.categoryId = categoryId;
+        this.description = description;
+    }
 }

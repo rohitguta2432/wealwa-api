@@ -8,7 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.validation.Valid;
+import java.util.UUID;
 
 /**
  * @Author rohit
@@ -22,8 +22,10 @@ public class ContentController {
     private ContentService contentService;
 
     @PostMapping
-    public ResponseEntity<?> create(@Valid @RequestPart Contents contents, @RequestPart MultipartFile file) {
-        return new ResponseEntity<>(contentService.create(contents,file), HttpStatus.OK);
+    public ResponseEntity<?> create(@RequestPart(required = true) UUID categoryId,
+                                    @RequestPart(required = true) String description,
+                                    @RequestPart MultipartFile file) {
+        return new ResponseEntity<>(contentService.create(new Contents(categoryId, description), file), HttpStatus.OK);
     }
 
     @GetMapping
